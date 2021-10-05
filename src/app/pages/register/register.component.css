@@ -1,0 +1,21 @@
+.wrapper {
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 25px;
+  background-color: rgb(34, 34, 34);
+}
+
+.register-label {
+  color: white;
+  font-size: 24px;
+}
+
+.register-title{
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
