@@ -16,12 +16,14 @@
             class="form-control mb-2"
             placeholder="Please enter your first name"
           />
+          <div class="form-error"  *ngIf="firstName.invalid && firstName.touched">First name is required</div>
           <label class="register-label">Email</label>
           <input
             formControlName="email"
             class="form-control mb-2"
             placeholder="Please enter your username"
           />
+          <div class="form-error"  *ngIf="email.invalid && email.touched">Email is required</div>
           <label class="register-label">Password</label>
           <input
             formControlName="password"
@@ -29,6 +31,7 @@
             placeholder="Please enter your password"
             type="password"
           />
+          <div class="form-error" *ngIf="password.invalid && password.touched">Password is required</div>
         </div>
         <div class="col-6">
           <label class="register-label">Last Name</label>
@@ -37,12 +40,14 @@
             class="form-control mb-2"
             placeholder="Please enter your last name"
           />
+          <div class="form-error" *ngIf="lastName.invalid && lastName.touched">Last name is required</div>
           <label class="register-label">Username</label>
           <input
             formControlName="userName"
             class="form-control mb-2"
             placeholder="Please enter your email"
           />
+          <div class="form-error" *ngIf="userName.invalid && userName.touched">Username is required</div>
           <label class="register-label">Confirm Password</label>
           <input
             formControlName="confirmPassword"
@@ -50,10 +55,12 @@
             placeholder="Please confirm your password"
             type="password"
           />
+          <div class="form-error" *ngIf="confirmPassword.invalid && confirmPassword.touched"> Please confirm your password</div>
+
         </div>
       </div>
       <div class="button-wrapper">
-        <button type="submit" class="btn btn-primary mb-4">
+        <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary mb-4">
           Complete Registration
         </button>
       </div>
