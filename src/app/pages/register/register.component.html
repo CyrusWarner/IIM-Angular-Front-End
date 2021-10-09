@@ -1,47 +1,62 @@
 <div class="container pt-5">
-  <div class="wrapper">
-    <div class="register-title mt-4">
-      <h1>Register</h1>
-    </div>
-    <div class="row m-4">
-      <div class="col-6">
-        <label class="register-label">First Name</label>
-        <input
-          class="form-control mb-2"
-          placeholder="Please enter your first name"
-        />
-        <label class="register-label">Last Name</label>
-        <input
-          class="form-control mb-2"
-          placeholder="Please enter your username"
-        />
-        <label class="register-label">Password</label>
-        <input
-          class="form-control "
-          placeholder="Please enter your password"
-        />
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="registerUser(registerForm.value)"
+  >
+    <div class="wrapper">
+      <div class="register-title mt-4">
+        <h1>Register</h1>
       </div>
-      <div class="col-6">
-        <label class="register-label">Last Name</label>
-        <input
-          class="form-control mb-2"
-          placeholder="Please enter your last name"
-        />
-        <label class="register-label">Username</label>
-        <input
-          class="form-control mb-2"
-          placeholder="Please enter your email"
-        />
-        <label class="register-label">Confirm Password</label>
-        <input
-          class="form-control"
-          placeholder="Please confirm your password"
-        />
 
+      <div class="row m-4">
+        <div class="col-6">
+          <label class="register-label">First Name</label>
+          <input
+            formControlName="firstName"
+            class="form-control mb-2"
+            placeholder="Please enter your first name"
+          />
+          <label class="register-label">Email</label>
+          <input
+            formControlName="email"
+            class="form-control mb-2"
+            placeholder="Please enter your username"
+          />
+          <label class="register-label">Password</label>
+          <input
+            formControlName="password"
+            class="form-control"
+            placeholder="Please enter your password"
+            type="password"
+          />
+        </div>
+        <div class="col-6">
+          <label class="register-label">Last Name</label>
+          <input
+            formControlName="lastName"
+            class="form-control mb-2"
+            placeholder="Please enter your last name"
+          />
+          <label class="register-label">Username</label>
+          <input
+            formControlName="userName"
+            class="form-control mb-2"
+            placeholder="Please enter your email"
+          />
+          <label class="register-label">Confirm Password</label>
+          <input
+            formControlName="confirmPassword"
+            class="form-control"
+            placeholder="Please confirm your password"
+            type="password"
+          />
+        </div>
+      </div>
+      <div class="button-wrapper">
+        <button type="submit" class="btn btn-primary mb-4">
+          Complete Registration
+        </button>
       </div>
     </div>
-    <div class="button-wrapper">
-        <button type="submit" class="btn btn-primary mb-4">Complete Registration</button>
-      </div>
-  </div>
+  </form>
 </div>

@@ -9,6 +9,12 @@
   font-size: 24px;
 }
 
+@media screen and (max-width: 720px) {
+  .register-label {
+    font-size: 14px;
+  }
+}
+
 .register-title{
   display: flex;
   justify-content: center;
