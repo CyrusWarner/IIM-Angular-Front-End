@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { passwordValidator } from 'src/app/validators/password-validator';
+import { IRegisterUser } from 'src/app/models/IRegisterUser';
 
 @Component({
   templateUrl: './register.component.html',
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
     }, {validators: passwordValidator})
   }
   // the second parameter of FormGroup is validators dont put password validator on formControl put it on formGroup
-  registerUser(formValues){
+  registerUser(formValues:IRegisterUser){
     console.log(formValues);
 
   }
