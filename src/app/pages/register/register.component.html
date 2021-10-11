@@ -24,6 +24,13 @@
             placeholder="Please enter your username"
           />
           <div class="form-error"  *ngIf="email.invalid && email.touched">Email is required</div>
+          <label class="register-label">Team Name</label>
+          <input
+            formControlName="teamName"
+            class="form-control mb-2"
+            placeholder="Please enter your team name"
+          />
+          <div class="form-error" *ngIf="teamName.invalid && teamName.touched">Team Name is required</div>
           <label class="register-label">Password</label>
           <input
             formControlName="password"
@@ -48,6 +55,14 @@
             placeholder="Please enter your email"
           />
           <div class="form-error" *ngIf="userName.invalid && userName.touched">Username is required</div>
+          <label class="register-label">Start Date</label>
+          <input
+            formControlName="startDate"
+            class="form-control mb-2"
+            placeholder="Please enter your teams start date"
+            type="date"
+          />
+          <div class="form-error" *ngIf="startDate.invalid && startDate.touched">Start Date is required</div>
           <label class="register-label">Confirm Password</label>
           <input
             formControlName="confirmPassword"

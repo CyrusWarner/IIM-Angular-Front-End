@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
   firstName:FormControl
   lastName:FormControl
   userName:FormControl
+  teamName: FormControl
+  startDate:FormControl
   email:FormControl
   password:FormControl
   confirmPassword:FormControl
@@ -21,6 +23,8 @@ export class RegisterComponent implements OnInit {
     this.firstName = new FormControl('', Validators.required);
     this.lastName =  new FormControl('', Validators.required)
     this.userName = new FormControl('', Validators.required)
+    this.teamName = new FormControl('', Validators.required)
+    this.startDate = new FormControl('', Validators.required)
     this.email = new FormControl('', Validators.required)
     this.password = new FormControl('', Validators.required)
     this.confirmPassword = new FormControl('', Validators.required)
@@ -29,6 +33,8 @@ export class RegisterComponent implements OnInit {
       firstName: this.firstName,
       lastName: this.lastName,
       userName: this.userName,
+      teamName: this.teamName,
+      startDate: this.startDate,
       email: this.email,
       password: this.password,
       confirmPassword: this.confirmPassword,
