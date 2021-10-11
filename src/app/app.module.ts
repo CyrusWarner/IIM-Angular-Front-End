@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import  { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   imports: [
@@ -13,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
