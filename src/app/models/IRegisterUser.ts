@@ -6,3 +6,10 @@ export interface IRegisterUser {
   password: string,
   confirmPassword: string
 }
+
+export interface IRegisterResponse {
+  body: null,
+  ok: boolean,
+  status: number,
+  statusText:string
+}
