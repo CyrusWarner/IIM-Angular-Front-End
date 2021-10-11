@@ -6,7 +6,8 @@ export class AccountService {
   constructor(private http:HttpClient) { }
 
   registerUser(user:IRegisterUser){
-    return this.http.post("http://localhost:38580/api/Account", user);
+    console.log(user)
+    return this.http.post("https://localhost:44357/api/Account", user);
   }
 
   loginUser(){

@@ -6,7 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import  { HttpClientModule } from '@angular/common/http';
-
+import { AccountService } from './services/account/account-service.ts.service';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import  { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
   ],
 
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { passwordValidator } from 'src/app/validators/password-validator';
 import { IRegisterUser } from 'src/app/models/IRegisterUser';
-
+import { AccountService } from 'src/app/services/account/account-service.ts.service';
 @Component({
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   email:FormControl
   password:FormControl
   confirmPassword:FormControl
-  constructor() { }
+  constructor(private accountService: AccountService ) { }
 
   ngOnInit(): void {
     this.firstName = new FormControl('', Validators.required);
@@ -37,7 +37,9 @@ export class RegisterComponent implements OnInit {
   }
   // the second parameter of FormGroup is validators dont put password validator on formControl put it on formGroup
   registerUser(formValues:IRegisterUser){
-    console.log(formValues);
+    this.accountService.registerUser(formValues).subscribe(data => {
+      console.log(data)
+    });
 
   }
 
