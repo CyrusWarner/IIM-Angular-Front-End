@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import  { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account/account-service.ts.service';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { AccountService } from './services/account/account-service.ts.service';
   declarations: [
     AppComponent,
     RegisterComponent,
+    LoginComponent,
   ],
 
   providers: [AccountService],

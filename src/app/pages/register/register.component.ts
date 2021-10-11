@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     this.accountService.registerUser(userToRegister).subscribe((res:HttpResponse<IRegisterResponse>) => {
       if(res.status === 200){
         console.log(res)
-        this.router.navigate(['/'])
+        this.router.navigate(['/login'])
       } else {
 
 
