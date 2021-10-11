@@ -1,0 +1,15 @@
+.wrapper {
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 25px;
+  background-color: rgb(34, 34, 34);
+}
+
+.login-title {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  color: white;
+}
