@@ -13,3 +13,7 @@
 label {
   color: white;
 }
+
+.login-error {
+  color: red
+}

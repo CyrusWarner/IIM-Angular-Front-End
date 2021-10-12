@@ -14,7 +14,7 @@
             id="email"
             class="form-control mb-2"
           />
-
+          <div class="login-error" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">Please enter your email to login</div>
           <label for="password">Password</label>
           <input
             formControlName="password"
@@ -22,9 +22,10 @@
             type="password"
             class="form-control mb-2"
           />
+          <div class="login-error" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">Please enter your password to login</div>
           <button
             [disabled]="loginForm.invalid"
-            class="btn btn-primary mb-2"
+            class="btn btn-primary mb-2 mt-2"
             type="submit"
           >
             Login
