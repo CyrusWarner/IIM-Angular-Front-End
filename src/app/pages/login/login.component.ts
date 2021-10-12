@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   loginUser(userToLogin:ILoginUser){
     this.accountService.loginUser(userToLogin).subscribe((res:HttpResponse<ICurrentUser>) => {
       if(res.status === 401){
-        this.unauthorized === true;
-        console.log(res.status);
+        this.unauthorized = true;
 
       } else if (res.status === 200) {
         this.router.navigate(['/'])

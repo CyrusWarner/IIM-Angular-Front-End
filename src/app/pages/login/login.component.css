@@ -29,3 +29,9 @@ label {
   display: flex;
   justify-content: center;
 }
+
+.login-failed-error {
+  display: flex;
+  justify-content: center;
+  color: red;
+}

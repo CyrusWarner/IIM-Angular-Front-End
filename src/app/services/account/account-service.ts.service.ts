@@ -22,14 +22,14 @@ export class AccountService {
   // tap allows us to see the value that we are being given back from the request
   loginUser(userToLogin:ILoginUser) {
     return this.http
-      .post('https://localhost:44357/api/Account/Login', userToLogin)
+      .post('https://localhost:44357/api/Account/Login', userToLogin, {observe: 'response'})
       .pipe(
         tap((data) => {
           this.currentUser = <ICurrentUser>data['data'];
         })
       )
       .pipe(catchError(err => {
-        return of(false)
+        return of(err)
       }))
   }
 }
