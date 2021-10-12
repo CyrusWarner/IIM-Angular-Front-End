@@ -18,10 +18,10 @@ export class AccountService {
       return of(false);
     }))
   }
-
-  // tap allws us to see the value that we are being given back from the request
+  // of operator is a creation operator. Creation operators are functions that create an Observable stream from a source
+  // tap allows us to see the value that we are being given back from the request
   loginUser(userToLogin:ILoginUser) {
-    this.http
+    return this.http
       .post('https://localhost:44357/api/Account/Login', userToLogin)
       .pipe(
         tap((data) => {
