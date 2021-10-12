@@ -1,5 +1,5 @@
 <div class="container pt-5">
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
     <div class="wrapper">
       <div class="login-title mt-4">
         <h1>Login</h1>
@@ -8,15 +8,27 @@
         <div class="col-1"></div>
         <div class="col-10">
           <label for="email">Email</label>
-          <input placeholder="Email..." id="email" class="form-control mb-2" />
+          <input
+            formControlName="email"
+            placeholder="Email..."
+            id="email"
+            class="form-control mb-2"
+          />
 
           <label for="password">Password</label>
           <input
+            formControlName="password"
             placeholder="Password..."
             type="password"
             class="form-control mb-2"
           />
-          <button class="btn btn-primary mb-2" type="submit">Login</button>
+          <button
+            [disabled]="loginForm.invalid"
+            class="btn btn-primary mb-2"
+            type="submit"
+          >
+            Login
+          </button>
         </div>
       </div>
       <div class="col-1"></div>
