@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
-  unauthorized: boolean = false;
-  constructor(private accountService: AccountService, private router: Router ) { }
+  constructor(public accountService: AccountService, private router: Router ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -24,12 +23,7 @@ export class LoginComponent implements OnInit {
 
   loginUser(userToLogin:ILoginUser){
     this.accountService.loginUser(userToLogin).subscribe((res:HttpResponse<ICurrentUser>) => {
-      if(res.status === 401){
-        this.unauthorized = true;
 
-      } else if (res.status === 200) {
-        this.router.navigate(['/'])
-      }
     });
 
 

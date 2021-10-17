@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 @Injectable()
 export class AccountService {
   currentUser: ICurrentUser;
+  isAuthorized: boolean;
   constructor(private http: HttpClient) {}
 
   registerUser(userToRegister: IRegisterUser) {
@@ -29,6 +30,9 @@ export class AccountService {
         })
       )
       .pipe(catchError(err => {
+        if(err.status === 401){
+          this.isAuthorized = true;
+        }
         return of(err)
       }))
   }
