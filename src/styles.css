@@ -2,3 +2,18 @@
   cursor: not-allowed;
   opacity: 50%;
 }
+
+.underline {
+  margin-bottom: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.underline:after {
+  content: '';
+  height: 2px;
+  width: 50%;
+  background: crimson;
+  position: absolute;
+  bottom: -8px;
+}
