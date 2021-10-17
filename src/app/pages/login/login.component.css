@@ -25,9 +25,15 @@ label {
   color: red
 }
 
-.login-btn {
+.login-footer {
   display: flex;
   justify-content: center;
+}
+
+.register-link {
+  text-align: center;
+  color: white;
+  margin-bottom: 8px;
 }
 
 .login-failed-error {

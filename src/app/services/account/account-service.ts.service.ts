@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IRegisterUser } from 'src/app/models/IRegisterUser';
 import { ICurrentUser } from 'src/app/models/ICurrentUser';
 import { ILoginUser } from 'src/app/models/ILoginUser';
-import { tap, catchError, map } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 @Injectable()
 export class AccountService {

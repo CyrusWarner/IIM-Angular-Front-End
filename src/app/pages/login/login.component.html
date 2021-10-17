@@ -42,7 +42,7 @@
           >
             Please enter your password to login
           </div>
-          <div class="login-btn">
+          <div class="login-footer">
             <button
               [disabled]="loginForm.invalid"
               class="btn btn-primary mb-2 mt-2"
@@ -51,6 +51,7 @@
               Login
             </button>
           </div>
+          <div class="register-link" >Not Registered? <a [routerLink]="['/register']">Register Here</a></div>
         </div>
       </div>
       <div class="col-1"></div>
