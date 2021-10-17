@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import  { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account/account-service.ts.service';
 import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home/home.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    HomeComponent,
   ],
 
   providers: [AccountService],
