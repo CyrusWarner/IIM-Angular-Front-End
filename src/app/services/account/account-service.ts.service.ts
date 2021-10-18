@@ -26,7 +26,8 @@ export class AccountService {
       .post('https://localhost:44357/api/Account/Login', userToLogin, {observe: 'response'})
       .pipe(
         tap((data) => {
-          this.currentUser = <ICurrentUser>data['data'];
+          this.currentUser = <ICurrentUser>data.body
+          this.saveCurrentUserToLocalStorage();
         })
       )
       .pipe(catchError(err => {
@@ -35,5 +36,10 @@ export class AccountService {
         }
         return of(err)
       }))
+  }
+
+  saveCurrentUserToLocalStorage(){
+    localStorage.setItem('user', JSON.stringify(this.currentUser));
+
   }
 }
