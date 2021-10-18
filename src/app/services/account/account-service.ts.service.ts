@@ -8,9 +8,8 @@ import { of } from 'rxjs';
 @Injectable()
 export class AccountService {
   currentUser: ICurrentUser;
-  isAuthorized: boolean;
+  isUnathorized: boolean;
   constructor(private http: HttpClient) {}
-
   registerUser(userToRegister: IRegisterUser) {
     return this.http.post(
       'https://localhost:44357/api/Account',
@@ -27,12 +26,15 @@ export class AccountService {
       .pipe(
         tap((data) => {
           this.currentUser = <ICurrentUser>data.body
+          if(this.currentUser.emailConfirmed){
+            this.isUnathorized = false;
+          }
           this.saveCurrentUserToLocalStorage();
         })
       )
       .pipe(catchError(err => {
         if(err.status === 401){
-          this.isAuthorized = true;
+          this.isUnathorized = true;
         }
         return of(err)
       }))
@@ -40,6 +42,5 @@ export class AccountService {
 
   saveCurrentUserToLocalStorage(){
     localStorage.setItem('user', JSON.stringify(this.currentUser));
-
   }
 }

@@ -1,3 +1,4 @@
+import { AuthGuard } from './components/authentication/auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +27,7 @@ import { HomeComponent } from './pages/home/home/home.component';
     HomeComponent,
   ],
 
-  providers: [AccountService],
+  providers: [AccountService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
