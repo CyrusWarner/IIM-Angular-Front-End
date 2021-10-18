@@ -43,4 +43,15 @@ export class AccountService {
   saveCurrentUserToLocalStorage(){
     localStorage.setItem('user', JSON.stringify(this.currentUser));
   }
+
+  getCurrentUserFromLocalStorage(){
+    let user:ICurrentUser = JSON.parse(localStorage.getItem('user'));
+    if(!user) return;
+    if(user.emailConfirmed){
+      this.currentUser = user;
+      this.isUnathorized = false;
+    }
+
+
+  }
 }
