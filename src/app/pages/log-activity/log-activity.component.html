@@ -1,4 +1,23 @@
-<p>log-activity works!</p>
-<div>
-
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <form [formGroup]="logActivityForm" (ngSubmit)="saveActivity(logActivityForm.value)">
+        <input formControlName="activityDate" type="date" class="form-control mb-2" placeholder="Activity Date" />
+        <div class="input-group mb-2">
+          <label class="input-group-text" for="inputGroupSelect01">Exercise Type</label>
+          <select formControlName="exerciseType" class="form-select form-control" id="inputGroupSelect01">
+            <option value="" selected>Select an exercise type</option>
+            <option value="BIKE">Bike</option>
+            <option value="RUN">Run</option>
+            <option value="SWIM">Swim</option>
+          </select>
+        </div>
+        <input formControlName="activityDistance" type="number" class="form-control" placeholder="Activity Distance" />
+      <button type="submit" class="btn btn-primary mr-2">Save Activity</button>
+      <button class="btn btn-primary">Cancel</button>
+      </form>
+    </div>
+    <div class="col-1"></div>
+  </div>
 </div>
