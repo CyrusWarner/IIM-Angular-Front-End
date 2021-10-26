@@ -1,5 +1,7 @@
+import { LogActivityService } from './../../services/logActivity/log-activity-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { activityDateValidator } from 'src/app/validators/activity-date.validator';
 @Component({
   selector: 'app-log-activity',
   templateUrl: './log-activity.component.html',
@@ -10,10 +12,10 @@ export class LogActivityComponent implements OnInit {
   activityDate: FormControl;
   exerciseType: FormControl;
   activityDistance: FormControl;
-  constructor() {}
+  constructor(public logActivityService: LogActivityService) {}
 
   ngOnInit(): void {
-    this.activityDate = new FormControl('', Validators.required);
+    this.activityDate = new FormControl('', [Validators.required, activityDateValidator]);
     this.exerciseType = new FormControl('', Validators.required);
     this.activityDistance = new FormControl('', Validators.required);
     this.logActivityForm = new FormGroup({
@@ -21,9 +23,5 @@ export class LogActivityComponent implements OnInit {
       exerciseType: this.exerciseType,
       activityDistance: this.activityDistance
     });
-  }
-
-  saveActivity(formValues) {
-    console.log(formValues);
   }
 }

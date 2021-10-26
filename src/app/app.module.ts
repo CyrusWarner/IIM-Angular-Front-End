@@ -1,3 +1,4 @@
+import { LogActivityService } from './services/logActivity/log-activity-service.service';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './authentication/auth.guard';
 import { NgModule } from '@angular/core';
@@ -34,7 +35,7 @@ import { CommonModule } from '@angular/common';
     LogActivityComponent,
   ],
 
-  providers: [AccountService, AuthGuard],
+  providers: [AccountService, LogActivityService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

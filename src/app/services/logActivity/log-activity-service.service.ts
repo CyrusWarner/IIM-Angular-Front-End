@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class LogActivityService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  saveActivity(formValues){
+    console.log(formValues);
+
+  }
 }
