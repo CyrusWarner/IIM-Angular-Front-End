@@ -5,5 +5,6 @@ export interface ICurrentUser {
   userName:string,
   email:string,
   emailConfirmed: boolean,
-  role: string
+  role: string,
+  teamId: number,
 }
