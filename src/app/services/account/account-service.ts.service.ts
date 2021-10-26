@@ -42,7 +42,7 @@ export class AccountService {
 
   logout(){
     localStorage.removeItem('user');
-    window.location.href = "/login"
+    window.location.href = "/Login"
   }
 
   saveCurrentUserToLocalStorage(){

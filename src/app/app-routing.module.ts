@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home/home.component';
-
+import { HomeComponent } from './pages/home/home.component';
+import { LogActivityComponent } from './pages/log-activity/log-activity.component';
 const routes: Routes = [
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: 'Home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'Register', component: RegisterComponent},
+  {path: 'LogActivity', component: LogActivityComponent},
+  {path: 'Login', component: LoginComponent},
+  {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ]
 
 @NgModule({

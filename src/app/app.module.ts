@@ -9,8 +9,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import  { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account/account-service.ts.service';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LogActivityComponent } from './pages/log-activity/log-activity.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
     BrowserModule,
@@ -19,6 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
+    CommonModule
   ],
   declarations: [
     AppComponent,
@@ -26,6 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
+    LogActivityComponent,
   ],
 
   providers: [AccountService, AuthGuard],
