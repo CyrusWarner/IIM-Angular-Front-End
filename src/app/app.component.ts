@@ -1,4 +1,4 @@
-import { AccountService } from 'src/app/services/account/account-service.ts.service';
+import { AccountService } from 'src/app/services/account-service/account-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
