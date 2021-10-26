@@ -10,7 +10,7 @@ import  { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account/account-service.ts.service';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home/home.component';
-import { NavbarComponent } from './components/navbar/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   imports: [
     BrowserModule,
