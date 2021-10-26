@@ -40,6 +40,11 @@ export class AccountService {
       }))
   }
 
+  logout(){
+    localStorage.removeItem('user');
+    window.location.href = "/login"
+  }
+
   saveCurrentUserToLocalStorage(){
     localStorage.setItem('user', JSON.stringify(this.currentUser));
   }
