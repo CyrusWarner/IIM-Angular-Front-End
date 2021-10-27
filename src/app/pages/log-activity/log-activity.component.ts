@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LogActivityService } from './../../services/logActivity/log-activity-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,16 +13,26 @@ export class LogActivityComponent implements OnInit {
   activityDate: FormControl;
   exerciseType: FormControl;
   activityDistance: FormControl;
-  constructor(public logActivityService: LogActivityService) {}
+  constructor(
+    public logActivityService: LogActivityService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.activityDate = new FormControl('', [Validators.required, activityDateValidator]);
+    this.activityDate = new FormControl('', [
+      Validators.required,
+      activityDateValidator,
+    ]);
     this.exerciseType = new FormControl('', Validators.required);
     this.activityDistance = new FormControl('', Validators.required);
     this.logActivityForm = new FormGroup({
       activityDate: this.activityDate,
       exerciseType: this.exerciseType,
-      activityDistance: this.activityDistance
+      activityDistance: this.activityDistance,
     });
+  }
+
+  handleCancel(): void {
+    this.router.navigateByUrl('/Home');
   }
 }
