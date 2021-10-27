@@ -36,11 +36,41 @@ describe('LogActivityService', () => {
 
       // Act
       service.getExerciseTypeId(logActivityValues.exerciseType);
-      service.createActivityLog(logActivityValues, mockAccountService.currentUser.teamId, mockAccountService.currentUser.id)
+      service.createActivityLog(
+        logActivityValues,
+        mockAccountService.currentUser.teamId,
+        mockAccountService.currentUser.id
+      );
       service.saveActivity(logActivityValues);
 
       // Assert
       expect(mockHttp.post).toHaveBeenCalled();
+    });
+  });
+  describe('getExerciseTypeId', () => {
+    it('should change exerciseTypeId state to 1 when the exercise type param is "BIKE"', () => {
+      // Act
+      service.getExerciseTypeId('BIKE');
+      // Assert
+      expect(service.exerciseTypeId).toBe(1);
+    });
+    it('should change the exerciseTypeId state to 2 when the exercise type param is "RUN"', () => {
+      // Act
+      service.getExerciseTypeId('RUN');
+      // Assert
+      expect(service.exerciseTypeId).toBe(2);
+    });
+    it('should change the exerciseTypeId state to 3 when the exercise type param is "SWIM"', () => {
+      // Act
+      service.getExerciseTypeId('SWIM');
+      // Assert
+      expect(service.exerciseTypeId).toBe(3);
+    });
+    it('should change the exerciseTypeNotFoundError to true when the param is not equivalent to any of the cases in the switch', () => {
+      // Act
+      service.getExerciseTypeId('JOG');
+      // Assert
+      expect(service.exerciseTypeNotFoundError).toBe(true);
     });
   });
 });
