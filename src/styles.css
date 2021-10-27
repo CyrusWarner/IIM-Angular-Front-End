@@ -28,3 +28,8 @@
   border: 1px solid white;
   box-shadow: 0px 0px 4px lightgray;
 }
+
+.form-error  {
+  float: right;
+  color: red;
+}

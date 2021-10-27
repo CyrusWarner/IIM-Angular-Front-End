@@ -12,6 +12,7 @@
           <em *ngIf="activityDate.errors?.ActivityDateBeforeTeamStartDate"
             >Activity date cannot be before the team start date</em
           >
+          <em class="form-error" *ngIf="activityDate.errors.required && activityDate.touched">Required</em>
           <label htmlFor="activityDate">Activity Date</label>
           <input
             id="activityDate"
@@ -20,25 +21,18 @@
             class="shadow-none form-control mb-2"
             placeholder="Activity Date"
           />
-          <div class="input-group mb-2">
-            <label
-              htmlFor="exerciseType"
-              class="input-group-text"
-              for="inputGroupSelect01"
-              >Exercise Type</label
-            >
+          <label>Exercise Type</label>
+              <em class="form-error" *ngIf="exerciseType.errors?.required && exerciseType.touched">Required</em>
             <select
               id="exerciseType"
               formControlName="exerciseType"
-              class="shadow-none form-select form-control"
-              id="inputGroupSelect01"
+              class="shadow-none form-select form-control mb-2"
             >
               <option value="" selected>Select an exercise type</option>
               <option value="BIKE">Bike</option>
               <option value="RUN">Run</option>
               <option value="SWIM">Swim</option>
             </select>
-          </div>
           <label htmlFor="activityDistance">Activity Distance</label>
           <input
             id="activityDistance"
@@ -54,7 +48,9 @@
           >
             Save Activity
           </button>
-          <button class="shadow-none btn btn-danger rounded-0 mt-2">Cancel</button>
+          <button class="shadow-none btn btn-danger rounded-0 mt-2">
+            Cancel
+          </button>
         </form>
       </div>
     </div>

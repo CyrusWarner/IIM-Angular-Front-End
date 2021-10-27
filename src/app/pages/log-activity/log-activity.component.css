@@ -6,6 +6,8 @@
 input, select {
   border-width: 0px 0px 1px 0px;
   border-radius: 0px;
+  display: block;
+
 }
 
 input:focus, select:focus {
@@ -16,4 +18,8 @@ input:focus, select:focus {
   background-color: #04AA6D;
   color: white;
   border-color: #04AA6D;
+}
+
+label {
+  display: block;
 }
