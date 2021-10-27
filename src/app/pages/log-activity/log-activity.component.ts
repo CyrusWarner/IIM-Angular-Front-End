@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { LogActivityService } from './../../services/logActivity/log-activity-service.service';
+import { LogActivityService } from '../../services/log-activity-service/log-activity.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { activityDateValidator } from 'src/app/validators/activity-date.validator';

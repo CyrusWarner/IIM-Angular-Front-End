@@ -2,7 +2,7 @@ import { ICurrentUser } from 'src/app/models/ICurrentUser';
 import { ILoginUser } from 'src/app/models/ILoginUser';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AccountService } from 'src/app/services/account-service/account-service.service';
+import { AccountService } from 'src/app/services/account-service/account.service';
 import { HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 

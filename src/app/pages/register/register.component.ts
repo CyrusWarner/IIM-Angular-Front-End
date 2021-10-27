@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { passwordValidator } from 'src/app/validators/password.validator';
 import { IRegisterUser } from 'src/app/models/IRegisterUser';
-import { AccountService } from 'src/app/services/account-service/account-service.service';
+import { AccountService } from 'src/app/services/account-service/account.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 @Component({

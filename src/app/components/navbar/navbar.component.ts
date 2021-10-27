@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AccountService } from 'src/app/services/account-service/account-service.service';
+import { AccountService } from 'src/app/services/account-service/account.service';
 @Component({
   selector: 'home-navbar',
   templateUrl: './navbar.component.html',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IActivity } from 'src/app/models/IActivity';
-import { AccountService } from '../account-service/account-service.service';
+import { AccountService } from '../account-service/account.service';
 @Injectable()
 export class LogActivityService {
   exerciseTypeId: number;
@@ -11,7 +11,8 @@ export class LogActivityService {
   saveActivity(formValues) {
     this.getExerciseTypeId(formValues.exerciseType);
     if (this.exerciseTypeId !== undefined) {
-      const activity = this.createActivityLog(formValues);
+      const {teamId, id} = this.accountService.currentUser;
+      const activity = this.createActivityLog(formValues, teamId, id);
       this.http.post('https://localhost:44357/api/ActivityLog', activity).subscribe();
     }
   }
@@ -33,12 +34,12 @@ export class LogActivityService {
     }
   }
 
-  createActivityLog(formValues) {
+  createActivityLog(formValues, teamId, userId) {
     const activity: IActivity = {
       activityDate: formValues.activityDate,
       activityDistance: formValues.activityDistance,
-      teamId: this.accountService.currentUser.teamId,
-      userId: this.accountService.currentUser.id,
+      teamId: teamId,
+      userId: userId,
       exerciseTypeId: this.exerciseTypeId,
     };
     return activity;
