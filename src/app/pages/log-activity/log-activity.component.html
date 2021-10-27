@@ -1,25 +1,62 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-1"></div>
     <div class="col-10">
-      <form [formGroup]="logActivityForm" (ngSubmit)="logActivityService.saveActivity(logActivityForm.value)">
-        <em *ngIf="activityDate.errors?.ActivityDateBeforeTeamStartDate">Activity date cannot be before the team start date</em>
-        <label htmlFor="activityDate">Activity Date</label>
-        <input id="activityDate" formControlName="activityDate" type="date" class="form-control mb-2" placeholder="Activity Date" />
-        <div class="input-group mb-2">
-          <label htmlFor="exerciseType" class="input-group-text" for="inputGroupSelect01">Exercise Type</label>
-          <select id="exerciseType" formControlName="exerciseType" class="form-select form-control" id="inputGroupSelect01">
-            <option value="" selected>Select an exercise type</option>
-            <option value="BIKE">Bike</option>
-            <option value="RUN">Run</option>
-            <option value="SWIM">Swim</option>
-          </select>
-        </div>
-        <label htmlFor="activityDistance">Activity Distance</label>
-        <input id="activityDistance" formControlName="activityDistance" type="number" class="form-control" placeholder="Activity Distance" />
-      <button [disabled]="logActivityForm.invalid" type="submit" class="btn btn-primary mr-2 mt-2 disabled">Save Activity</button>
-      <button  class="btn btn-danger mt-2">Cancel</button>
-      </form>
+      <div class="wrapper">
+        <h1 class="activity-title text-center mt-4">Log Activity</h1>
+        <form
+          class="m-4"
+          [formGroup]="logActivityForm"
+          (ngSubmit)="logActivityService.saveActivity(logActivityForm.value)"
+        >
+          <em *ngIf="activityDate.errors?.ActivityDateBeforeTeamStartDate"
+            >Activity date cannot be before the team start date</em
+          >
+          <label htmlFor="activityDate">Activity Date</label>
+          <input
+            id="activityDate"
+            formControlName="activityDate"
+            type="date"
+            class="shadow-none form-control mb-2"
+            placeholder="Activity Date"
+          />
+          <div class="input-group mb-2">
+            <label
+              htmlFor="exerciseType"
+              class="input-group-text"
+              for="inputGroupSelect01"
+              >Exercise Type</label
+            >
+            <select
+              id="exerciseType"
+              formControlName="exerciseType"
+              class="shadow-none form-select form-control"
+              id="inputGroupSelect01"
+            >
+              <option value="" selected>Select an exercise type</option>
+              <option value="BIKE">Bike</option>
+              <option value="RUN">Run</option>
+              <option value="SWIM">Swim</option>
+            </select>
+          </div>
+          <label htmlFor="activityDistance">Activity Distance</label>
+          <input
+            id="activityDistance"
+            formControlName="activityDistance"
+            type="number"
+            class="shadow-none form-control"
+            placeholder="Activity Distance"
+          />
+          <button
+            [disabled]="logActivityForm.invalid"
+            type="submit"
+            class="activity-btn shadow-none btn rounded-0 mr-2 mt-2 disabled"
+          >
+            Save Activity
+          </button>
+          <button class="shadow-none btn btn-danger rounded-0 mt-2">Cancel</button>
+        </form>
+      </div>
     </div>
     <div class="col-1"></div>
   </div>
