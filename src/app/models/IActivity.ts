@@ -1,6 +1,6 @@
 export interface IActivity {
   activityDate: string,
-  activityDistance: string,
+  activityDistance: number,
   teamId: number,
   userId: string,
   exerciseTypeId: number

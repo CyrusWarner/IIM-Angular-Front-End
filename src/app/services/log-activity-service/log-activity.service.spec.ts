@@ -4,6 +4,7 @@ import { AccountService } from '../account-service/account.service';
 import { LogActivityService } from './log-activity.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LogActivityComponent } from 'src/app/pages/log-activity/log-activity.component';
+import { IActivity } from 'src/app/models/IActivity';
 describe('LogActivityService', () => {
   let service: LogActivityService;
   let mockAccountService;
@@ -71,6 +72,44 @@ describe('LogActivityService', () => {
       service.getExerciseTypeId('JOG');
       // Assert
       expect(service.exerciseTypeNotFoundError).toBe(true);
+    });
+  });
+  describe('createActivityLog', () => {
+    it('should return null if no teamId or no userId', () => {
+      // Arrange
+      var logActivityValues = {
+        activityDate: '10/27/2021',
+        activityDistance: 2,
+        exerciseType: 'BIKE',
+      };
+
+      // Act
+      let activityLog = service.createActivityLog(logActivityValues, 0, '');
+
+      // Assert
+      expect(activityLog).toBeNull;
+    });
+    it('should return an activity if there is a valid teamId and userId', () => {
+      // Arrange
+      service.exerciseTypeId = 1;
+      var logActivityValues = {
+        activityDate: '10/27/2021',
+        activityDistance: 2,
+        exerciseType: 'BIKE',
+      };
+      var expectedActivityLog = {
+        activityDate: '10/27/2021',
+        activityDistance: 2,
+        exerciseTypeId: service.exerciseTypeId,
+        teamId: 3,
+        userId: 'userid-test'
+      }
+
+      // Act
+      let activityLog: IActivity = service.createActivityLog(logActivityValues, 3, 'userid-test');
+
+      // Assert
+      expect(activityLog).toEqual(expectedActivityLog);
     });
   });
 });

@@ -13,7 +13,10 @@ export class LogActivityService {
     if (this.exerciseTypeId !== undefined) {
       const {teamId, id} = this.accountService.currentUser;
       const activity = this.createActivityLog(formValues, teamId, id);
-      this.http.post('https://localhost:44357/api/ActivityLog', activity).subscribe();
+      if(activity !== null){
+        this.http.post('https://localhost:44357/api/ActivityLog', activity).subscribe();
+      }
+      // Handle activity creation error here
     }
   }
 
@@ -34,7 +37,8 @@ export class LogActivityService {
     }
   }
 
-  createActivityLog(formValues, teamId, userId) {
+  createActivityLog(formValues, teamId:number, userId:string) {
+    if((!teamId || !userId) || (teamId <= 0 || userId === "")) return null;
     const activity: IActivity = {
       activityDate: formValues.activityDate,
       activityDistance: formValues.activityDistance,
