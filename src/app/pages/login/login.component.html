@@ -1,5 +1,5 @@
 <div class="container pt-5">
-  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
     <div class="wrapper">
       <div class="login-title underline mt-4">
         <h1>Login</h1>
@@ -51,7 +51,7 @@
               Login
             </button>
           </div>
-          <div class="register-link" >Not Registered? <a [routerLink]="['/register']">Register Here</a></div>
+          <div class="register-link" >Not Registered? <a [routerLink]="['/Register']">Register Here</a></div>
         </div>
       </div>
       <div class="col-1"></div>

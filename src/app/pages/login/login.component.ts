@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  loginUser(userToLogin:ILoginUser){
+  onSubmit(userToLogin:ILoginUser){
     this.accountService.loginUser(userToLogin).subscribe((res:HttpResponse<ICurrentUser>) => {
       if(res.status === 200){
         this.accountService.saveCurrentUserToLocalStorage();

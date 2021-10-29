@@ -1,21 +1,25 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { AccountService } from 'src/app/services/account-service/account.service';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { of } from 'rxjs';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let mockAccountService;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+  beforeEach(() => {
+    mockAccountService = jasmine.createSpyObj([
+      'saveCurrentUserToLocalStorage',
+    ]);
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, ReactiveFormsModule],
       declarations: [LoginComponent],
       providers: [{ provide: AccountService, useValue: mockAccountService }],
-    }).compileComponents();
-  });
-
-  beforeEach(() => {
+    });
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -47,6 +51,27 @@ describe('LoginComponent', () => {
       password.setValue('');
 
       expect(password.hasError('required')).toBeTruthy();
+    });
+    it('should call the onSubmit method if the form is valid', () => {
+      const fakeLoginValues = {
+        email: 'testemail@gmail.com',
+        password: 'testPassword',
+      };
+      spyOn(component, 'onSubmit');
+      component.loginForm.controls.email.setValue('testemail@gmail.com');
+      component.loginForm.controls.password.setValue('testPassword');
+      fixture.detectChanges();
+      let btn: HTMLButtonElement =
+        fixture.nativeElement.querySelector('button');
+
+      btn.click();
+
+      expect(btn.disabled).toBeFalsy();
+      expect(component.loginForm.invalid).toBeFalsy();
+      expect(component.loginForm.value).toEqual(fakeLoginValues);
+      expect(component.onSubmit).toHaveBeenCalledOnceWith(
+        component.loginForm.value
+      );
     });
   });
 });
