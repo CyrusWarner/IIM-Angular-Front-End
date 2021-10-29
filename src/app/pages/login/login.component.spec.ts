@@ -26,10 +26,27 @@ describe('LoginComponent', () => {
   });
   describe('form', () => {
     it('should be invalid when inputs are empty', () => {
-      component.loginForm.controls.email.setValue('');
-      component.loginForm.controls.password.setValue('');
+      let email = component.loginForm.controls.email;
+      let password = component.loginForm.controls.password;
+
+      email.setValue('');
+      password.setValue('');
 
       expect(component.loginForm.invalid).toBeTruthy();
+    });
+    it('email input should have required error if email is empty', () => {
+      const email = component.loginForm.controls.email;
+
+      email.setValue('');
+
+      expect(email.hasError('required')).toBeTruthy();
+    });
+    it('password input should have required error if password is empty', () => {
+      const password = component.loginForm.controls.password;
+
+      password.setValue('');
+
+      expect(password.hasError('required')).toBeTruthy();
     });
   });
 });
