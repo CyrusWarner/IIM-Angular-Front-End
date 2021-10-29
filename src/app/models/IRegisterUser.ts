@@ -1,6 +1,8 @@
 export interface IRegisterUser {
   firstName: string,
   lastName: string,
+  teamName: string,
+  startDate: string,
   userName: string,
   email: string,
   password: string,

@@ -1,10 +1,5 @@
 import { of } from 'rxjs';
-import { TestBed } from '@angular/core/testing';
-import { AccountService } from '../account-service/account.service';
 import { LogActivityService } from './log-activity.service';
-import { RouterTestingModule } from '@angular/router/testing';
-import { LogActivityComponent } from 'src/app/pages/log-activity/log-activity.component';
-import { IActivity } from 'src/app/models/IActivity';
 describe('LogActivityService', () => {
   let service: LogActivityService;
   let mockAccountService;
@@ -106,7 +101,7 @@ describe('LogActivityService', () => {
       }
 
       // Act
-      let activityLog: IActivity = service.createActivityLog(logActivityValues, 3, 'userid-test');
+      let activityLog = service.createActivityLog(logActivityValues, 3, 'userid-test');
 
       // Assert
       expect(activityLog).toEqual(expectedActivityLog);

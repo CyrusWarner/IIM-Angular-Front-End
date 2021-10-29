@@ -10,10 +10,9 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ LoginComponent ],
-      providers: [{provide: AccountService, useValue: mockAccountService}]
-    })
-    .compileComponents();
+      declarations: [LoginComponent],
+      providers: [{ provide: AccountService, useValue: mockAccountService }],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -24,5 +23,13 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  describe('form', () => {
+    it('should be invalid when inputs are empty', () => {
+      component.loginForm.controls.email.setValue('');
+      component.loginForm.controls.password.setValue('');
+
+      expect(component.loginForm.invalid).toBeTruthy();
+    });
   });
 });
