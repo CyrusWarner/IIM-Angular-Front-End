@@ -25,7 +25,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
   describe('form', () => {
@@ -35,6 +35,7 @@ describe('LoginComponent', () => {
 
       email.setValue('');
       password.setValue('');
+      fixture.detectChanges();
 
       expect(component.loginForm.invalid).toBeTruthy();
     });
@@ -42,6 +43,7 @@ describe('LoginComponent', () => {
       const email = component.loginForm.controls.email;
 
       email.setValue('');
+      fixture.detectChanges();
 
       expect(email.hasError('required')).toBeTruthy();
     });
@@ -49,8 +51,27 @@ describe('LoginComponent', () => {
       const password = component.loginForm.controls.password;
 
       password.setValue('');
+      fixture.detectChanges();
 
       expect(password.hasError('required')).toBeTruthy();
+    });
+    it('submit button should be disabled if the form is invalid', () => {
+      let btn: HTMLButtonElement =
+        fixture.nativeElement.querySelector('button');
+
+      expect(component.loginForm.invalid).toBeTruthy();
+      expect(btn.disabled).toBeTruthy();
+    });
+    it('submit button should not be disabled if the form is valid', () => {
+      let btn: HTMLButtonElement =
+        fixture.nativeElement.querySelector('button');
+
+      component.loginForm.controls.email.setValue('testemail@gmail.com');
+      component.loginForm.controls.password.setValue('testPassword');
+      fixture.detectChanges();
+
+      expect(component.loginForm.valid).toBeTruthy();
+      expect(btn.disabled).toBeFalsy();
     });
     it('should call the onSubmit method if the form is valid', () => {
       const fakeLoginValues = {
@@ -58,16 +79,15 @@ describe('LoginComponent', () => {
         password: 'testPassword',
       };
       spyOn(component, 'onSubmit');
-      component.loginForm.controls.email.setValue('testemail@gmail.com');
-      component.loginForm.controls.password.setValue('testPassword');
-      fixture.detectChanges();
       let btn: HTMLButtonElement =
         fixture.nativeElement.querySelector('button');
 
+      component.loginForm.controls.email.setValue('testemail@gmail.com');
+      component.loginForm.controls.password.setValue('testPassword');
+      fixture.detectChanges();
       btn.click();
 
-      expect(btn.disabled).toBeFalsy();
-      expect(component.loginForm.invalid).toBeFalsy();
+      expect(component.loginForm.valid).toBeTruthy();
       expect(component.loginForm.value).toEqual(fakeLoginValues);
       expect(component.onSubmit).toHaveBeenCalledOnceWith(
         component.loginForm.value
