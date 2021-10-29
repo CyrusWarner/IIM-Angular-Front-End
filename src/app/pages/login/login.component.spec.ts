@@ -12,9 +12,7 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(() => {
-    mockAccountService = jasmine.createSpyObj([
-      'saveCurrentUserToLocalStorage',
-    ]);
+    mockAccountService = jasmine.createSpyObj({ loginUser: () => {} });
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, ReactiveFormsModule],
       declarations: [LoginComponent],
@@ -27,6 +25,20 @@ describe('LoginComponent', () => {
 
   it('should be created', () => {
     expect(component).toBeTruthy();
+  });
+  describe('onSubmit', () => {
+    it('should call the loginUser method in the accountService', () => {
+      let fakeUserToLogin = {
+        email: 'testemail@gmail.com',
+        password: 'testPassword567!',
+      };
+
+      mockAccountService.loginUser.and.returnValue(of(false));
+      component.onSubmit(fakeUserToLogin);
+
+
+      expect(mockAccountService.loginUser).toHaveBeenCalled();
+    });
   });
   describe('form', () => {
     it('should be invalid when inputs are empty', () => {
